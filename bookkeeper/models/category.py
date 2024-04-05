@@ -12,9 +12,13 @@ from ..repository.abstract_repository import AbstractRepository
 
 @dataclass
 class Category:
-    category_name: str
+    name: str
     description: str
     pk: int = 0
+
+
+    def sql_format(self):
+        return {"category":self.name, "description":self.description}
 
 
 

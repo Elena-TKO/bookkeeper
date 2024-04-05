@@ -1,7 +1,7 @@
 import os.path
 import sqlite3
 from datetime import datetime, date
-from test_data import *
+from bookkeeper.repository.test_data import *
 import calendar
 
 
@@ -44,6 +44,7 @@ class SqliteRepository():
         self.limits = {
             "Day":1000, "Week": 3000, "Month": 20000
         }
+        self.table_ids = {"Expenses":"expense_id", "Categories":"category_id"}
 
 
         if os.path.exists('database.db'):
@@ -56,8 +57,9 @@ class SqliteRepository():
 
             c.execute("""CREATE TABLE Expenses (
                 expense_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                title TEXT,
+                expense TEXT,
                 category TEXT,
+                comment TEXT,
                 total FLOAT,
                 date DATE
             )""")
@@ -88,6 +90,27 @@ class SqliteRepository():
                 print(line)
         db.close()
 
+
+    def get_row(self, table_name:str, row_id:int):
+        db = sqlite3.connect(self.dbname)
+        c = db.cursor()
+
+        id_name = self.table_ids[table_name]
+        c.execute(f"""
+                SELECT * FROM {table_name}
+                WHERE {id_name} = {row_id}
+        """)
+        res = c.fetchall()[0]
+        db.close()
+        res_dict = {}
+        for i,el in enumerate(res):
+            if i == 0:
+                column = id_name
+            else:
+                column = self.table_columns[table_name][i-1]
+            value = res[i]
+            res_dict[column] = value
+        return res_dict
 
     def get_expenses_per_period(self, period:str, date:str):
         """
@@ -134,7 +157,7 @@ class SqliteRepository():
             res = c.fetchall()
             db.close()
 
-            if res == []:
+            if res == [] or res[0][0] == None:
                 return 0
             else:
                 return res[0][0]
@@ -259,6 +282,7 @@ if __name__ == "__main__":
 
     # total_per_period = repo.get_expenses_per_period('Month', '2022-10-01')
     # print(total_per_period)
+    # print(repo.get_row('Categories', 4))
 
 
 

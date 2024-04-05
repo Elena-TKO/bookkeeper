@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c8b0852-75df-49c0-91da-0d214b51f39b" name="Changes" comment="" />
+    <list default="true" id="7c8b0852-75df-49c0-91da-0d214b51f39b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookkeeper/models/budget.py" beforeDir="false" afterPath="$PROJECT_DIR$/bookkeeper/models/budget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookkeeper/models/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/bookkeeper/models/category.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookkeeper/models/expense.py" beforeDir="false" afterPath="$PROJECT_DIR$/bookkeeper/models/expense.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookkeeper/repository/sqlite_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/bookkeeper/repository/sqlite_repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookkeeper/repository/test_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/bookkeeper/repository/test_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_models/test_category.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_models/test_category.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_models/test_expense.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_models/test_expense.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_repository/test_sqlite_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_repository/test_sqlite_repository.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,22 +38,30 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2eKI6GGJhUiH0XwQp36fJ3QNx5g" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.simple_client.executor&quot;: &quot;Run&quot;,
-    &quot;Python.sqlite_repository.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/elena/Work/sandbox&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python tests.pytest in test_sqlite_repository.py.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.oop.executor": "Run",
+    "Python.simple_client.executor": "Run",
+    "Python.sqlite_repository.executor": "Run",
+    "Python.table.executor": "Run",
+    "Python.table_oop.executor": "Run",
+    "Python.widgets.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/elena/Study/Python/semester2/bookkeeper_origin",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
