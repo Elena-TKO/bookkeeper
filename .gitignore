@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+#Folders and files
+bookkeeper/repository/database.db
+
+
 # C extensions
 *.so
 

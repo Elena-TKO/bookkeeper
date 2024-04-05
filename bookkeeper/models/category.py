@@ -8,8 +8,24 @@ from typing import Iterator
 from ..repository.abstract_repository import AbstractRepository
 
 
+
+
 @dataclass
 class Category:
+    category_name: str
+    description: str
+    pk: int = 0
+
+
+
+
+
+
+
+
+
+@dataclass
+class Category_old:
     """
     Категория расходов, хранит название в атрибуте name и ссылку (id) на
     родителя (категория, подкатегорией которой является данная) в атрибуте parent.
