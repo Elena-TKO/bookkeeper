@@ -48,7 +48,7 @@ class Bookkeeper():
         print(datetime.now())
         now_date = datetime.now().strftime('%Y-%m-%d')
         for period in ['Day', 'Week', 'Month']:
-            b = self.repo.get_expenses_per_period(period, '2022-10-01')  
+            b = self.repo.get_expenses_per_period(period, now_date)  
             new_budget.append(float(b))
         self.new_budget = Budget(*new_budget  )
           
@@ -63,6 +63,8 @@ class Bookkeeper():
     
         self.view.update_expenses([[exp.expense_date, str(exp.total), exp.name, exp.comment] for exp in self.expenses])
         self.view.update_budget(up_b)
+        
+        self.view.update_categories([el.name for el in self.categories])
         print('-_________')
     
             

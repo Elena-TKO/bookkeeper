@@ -122,7 +122,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.widget_l1 = QWidget()
         self.h_layout = QtWidgets.QHBoxLayout()
         self.h_layout.addWidget(QtWidgets.QLabel(f'Сумма'))
-        self.h_layout.addWidget(QtWidgets.QLineEdit())
+        self.input_sum = QtWidgets.QLineEdit()
+        self.h_layout.addWidget(self.input_sum)
         self.widget_l1.setLayout(self.h_layout)
 
         self.layout.addWidget(self.widget_l1)
@@ -131,9 +132,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.h_layout = QtWidgets.QHBoxLayout()
         self.h_layout.addWidget(QtWidgets.QLabel(f'Категория'))
         self.combo_box = QtWidgets.QComboBox()
-        [self.combo_box.addItem(i) for i in 'hello']
+        
         self.h_layout.addWidget(self.combo_box)
-        self.h_layout.addWidget(QtWidgets.QPushButton("Добавить категорию"))
+        self.submit_buttom = QtWidgets.QPushButton("Добавить категорию")
+        self.h_layout.addWidget(self.submit_buttom)
         self.widget_l2.setLayout(self.h_layout)
 
         self.layout.addWidget(self.widget_l2)
@@ -141,6 +143,12 @@ class MainWindow(QtWidgets.QMainWindow):
         self.widget.setLayout(self.layout)
         self.setCentralWidget(self.widget)
         self.resize(700, 800)
+        
+    def get_new_expense_data(self):
+        {
+            'total':self.input_sum.text(), 
+            'category':self.combo_box.currentData()
+        }
 
 
     def update_expenses(self, data):
@@ -148,6 +156,9 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def update_budget(self, data):
         self.table2.add_data(data)
+        
+    def update_categories(self, new_cats):
+        [self.combo_box.addItem(i) for i in new_cats]
         
     
 

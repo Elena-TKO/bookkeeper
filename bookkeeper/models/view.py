@@ -46,13 +46,17 @@ class View():
         self.main_window = MainWindow()
         self.main_window.show()
         
-    
-    
+        
+
+        
+        
+    def update_categories(self, cats):
+        self.main_window.update_categories(cats)
     
     def update_expenses(self, data):
         self.main_window.update_expenses(data)
         self.expenses_in_view = data
-        self.main_window.show()
+        
         
     def update_budget(self, data):
         self.main_window.update_budget(data)
