@@ -1,4 +1,4 @@
-from bookkeeper.view.widgets import *
+from view.widgets import *
 
 
 data = [row.split('|') for row in '''
