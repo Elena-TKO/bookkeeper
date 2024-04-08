@@ -47,9 +47,7 @@ class SqliteRepository():
         self.table_ids = {"Expenses":"expense_id", "Categories":"category_id"}
 
 
-        if os.path.exists('database.db'):
-            print("Database already exists...")
-        else:
+        if not os.path.exists('database.db'):
             print("Creating database...")
             db = sqlite3.connect('database.db')
             c = db.cursor()
@@ -86,8 +84,22 @@ class SqliteRepository():
         if table_data == []:
             print("No data")
         else:
+            
             for line in table_data:
                 print(line)
+        db.close()
+        
+    
+    def get_table(self, table_name:str):
+        db = sqlite3.connect(self.dbname)
+        c = db.cursor()
+        print(f"Table: {table_name}")
+        c.execute(f"""SELECT * FROM {table_name}""")
+        table_data = c.fetchall()
+        if table_data == []:
+            print("No data")
+        else:
+            return table_data
         db.close()
 
 
@@ -271,20 +283,6 @@ def create_test_expenses(repo):
 
 
 
-if __name__ == "__main__":
-    repo = SqliteRepository()
-    # repo.add("Categories", {"category":"cat", "description":"it is a cat"})
-
-    # repo.update('Categories', {'category':'dog', 'description':"it is a dog"}, {'category_id':1})
-    # repo.delete('Categories', {'category':'cat'})
-    # create_test_expenses(repo)
-    # create_test_categories(repo)
-
-    # total_per_period = repo.get_expenses_per_period('Month', '2022-10-01')
-    # print(total_per_period)
-    # print(repo.get_row('Categories', 4))
-
-
 
 # Добавление данных
 
@@ -348,3 +346,21 @@ def add_expense(title, category, total, date):
     c.execute(f"""INSERT INTO Expenses VALUES
      ({title}, {category}, {total}, {date})""")
     db.close()
+
+
+
+
+
+if __name__ == "__main__":
+    repo = SqliteRepository()
+    # repo.add("Categories", {"category":"cat", "description":"it is a cat"})
+
+    # repo.update('Categories', {'category':'dog', 'description':"it is a dog"}, {'category_id':1})
+    # repo.delete('Categories', {'category':'cat'})
+    # create_test_expenses(repo)
+    # create_test_categories(repo)
+
+    # total_per_period = repo.get_expenses_per_period('Month', '2022-10-01')
+    # print(total_per_period)
+    # print(repo.get_row('Categories', 4))
+

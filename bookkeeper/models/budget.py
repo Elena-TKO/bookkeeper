@@ -5,13 +5,10 @@ from typing import Iterator
 
 @dataclass
 class Budget:
-    name: str
-    description: str
-    pk: int = 0
+    day:float|int
+    week:float|int
+    month:float|int   
 
-
-    def sql_format(self):
-        return {"category":self.name, "description":self.description}
 
 
 

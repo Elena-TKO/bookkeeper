@@ -40,7 +40,7 @@ class Table_expenses(QtWidgets.QMainWindow):
 
         self.window = self.expenses_table = QTableWidget(self, 4, 20)
         self.window.setWindowTitle('Table')
-        self.window.resize(600, 600)
+        # self.window.resize(300, 200)
 
 
         self.expenses_table.setColumnCount(4)
@@ -75,7 +75,7 @@ class Table_budget(QWidget):
 
         self.window = self.table = QTableWidget(self)
         self.window.setWindowTitle("Бюджет")
-        self.window.resize(600, 300)
+        # self.window.resize(300, 300)
 
         self.table.setColumnCount(2)
         self.table.setRowCount(3)
@@ -90,11 +90,22 @@ class Table_budget(QWidget):
 
         self.table.setEditTriggers(
                     QtWidgets.QAbstractItemView.NoEditTriggers)
-
+        
+        
+    def add_data(self, data):
+            for i, row in enumerate(data):
+                for j, x in enumerate(row):
+                    self.table.setItem(
+                        i, j,
+                        QTableWidgetItem(x.capitalize())
+                    )
+        
+        
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
 
         self.table1 = Table_expenses()
         self.table2 = Table_budget()
@@ -103,31 +114,43 @@ class MainWindow(QtWidgets.QMainWindow):
         self.layout = QtWidgets.QVBoxLayout()
 
         self.layout.addWidget(QtWidgets.QLabel(f'Расходы'))
+        
         self.layout.addWidget(self.table1.window)
         self.layout.addWidget(QtWidgets.QLabel(f'Бюджет'))
         self.layout.addWidget(self.table2.window)
 
         self.widget_l1 = QWidget()
         self.h_layout = QtWidgets.QHBoxLayout()
-        self.h_layout.addWidget(QtWidgets.QLabel(f'Бюджет'))
-        self.h_layout.addWidget(QtWidgets.QLineEdit('placeholder'))
+        self.h_layout.addWidget(QtWidgets.QLabel(f'Сумма'))
+        self.h_layout.addWidget(QtWidgets.QLineEdit())
         self.widget_l1.setLayout(self.h_layout)
 
         self.layout.addWidget(self.widget_l1)
-
+ 
         self.widget_l2 = QWidget()
         self.h_layout = QtWidgets.QHBoxLayout()
         self.h_layout.addWidget(QtWidgets.QLabel(f'Категория'))
-        self.h_layout.addWidget(QtWidgets.QComboBox())
+        self.combo_box = QtWidgets.QComboBox()
+        [self.combo_box.addItem(i) for i in 'hello']
+        self.h_layout.addWidget(self.combo_box)
         self.h_layout.addWidget(QtWidgets.QPushButton("Добавить категорию"))
         self.widget_l2.setLayout(self.h_layout)
 
         self.layout.addWidget(self.widget_l2)
 
-
-
         self.widget.setLayout(self.layout)
         self.setCentralWidget(self.widget)
+        self.resize(700, 800)
+
+
+    def update_expenses(self, data):
+        self.table1.add_data(data)
+
+    def update_budget(self, data):
+        self.table2.add_data(data)
+        
+    
+
 
 
 
@@ -136,6 +159,7 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window_table = MainWindow()
     # window_table.setWindowTitle('Повторное использование')
-    window_table.resize(700, 800)
+    # window_table.resize(700, 800)
+    window_table.update_expenses(data)
     window_table.show()
     sys.exit(app.exec())

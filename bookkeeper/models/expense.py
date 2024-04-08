@@ -17,6 +17,7 @@ class Expense:
     comment - комментарий
     pk - id записи в базе данных
     """
+    
     name: str
     total: int
     category: str = field(default='Undefined')
@@ -24,6 +25,7 @@ class Expense:
     expense_date: datetime = field(default_factory=datetime.now)
     # added_date: datetime = field(default_factory=datetime.now)
     pk: int = 0
+    
 
 
     def sql_format(self):
